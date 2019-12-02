@@ -1,0 +1,53 @@
+10月20号：
+今天一直卡在了表单提交数据给后台，后台获取值为null。解决方案：表单里面的name属性要和后端的传入名字一样。
+select语句里面，实体类和数据库的表的每一列都要保证一样，
+然后select语句:select * from table 改为：select 属性 as 实体类属性 from table；
+
+11月12号：
+今天出现了404，原来是Controller层忘记注册@Controller了。导致发送到controller层进行处理的路径找不到接口。
+
+关于路径问题：在HTML里面只要表明去哪里就行了，不需要前置的路径
+在controller层不同的controller类中需要表明完整的请求路径。
+
+11月15号
+今天项目出现了jquery.min.js一直报错失效，于是把jQuery第一句代码删了，就可以成功加载jQuery。
+
+
+11月19号：controller层的request域，显示用户信息在页面转跳的时候，值为null，需要引入session，session在浏览器访问到关闭浏览器都有效。
+controller层先把所存储的对象放在model中（request域级别），然后通过在控制器上加@SessionAttributes注解，把放到model中的对象再放置到session中，其他页面可以调用session域中的值。（是model后，然后最后再复制到session，并且）
+
+request：这个前面学过，A页面请求转发到B页面，那么使用的是同一个request，那么A,B页面都算是request的作用域，也就是通过请求转发的页面都是其作用域。
+session：该作用域在一个web项目下任何位置应该读访问的到，只要cookie不关闭，并且cookie设置　　的访问路径为"/"，
+
+11月20号：尽量不要使用@SessionAttributes注解，在注销事件是时候，清除的是局部的session，也就是@SessionAttribute下的session，系统的session依然存在。直接使用传统是session便可以了 eg:  demo项目Controller层
+
+11月22号：jQuery axja的时候，前端报错，原来是controller层返回的是字符串，需要用控制器注解@RsetController（@Controller和@ResponseBody）代替@Controller，如果考虑到控制器还有返回view的，解决方法是在方法上加上@ResponseBody就行了
+前台的视图模版我使用的是thymeleaf，它是SpringBoot官方推荐的一个html5模版引擎，SpringBoot官方不推荐使用jsp，SpringBoot官网也是使用这个模版引擎做的。
+12.02
+1、在controller层中，在判断语句中.equal方法进行比较是正确的，不能用等于
+2、在隐藏div的时候，通过判断
+document.getElementById("yc").innerText!=null){
+        document.getElementById("yc1").style.display="none";
+来隐藏或者显示转跳按钮。
+3、清空输入表单的空格：
+ var country=$("#text1").val().replace(/(^\s*)|(\s*$)/g,"");
+        var country=$("#text1").val().replace(/\s/g,"");
+
+
+4、Httpsession 实现在登录时显示注销时清空用户名的功能，
+先把前端登录传来的用户名放在model域（request域）中，然后在前端第一次页面直接调用。任何把用户名同时放在session域中，在查询国家首都的时候吧session的内的值复制给model，使得每次查询，前端都能调用出来。（session的值在HTML页面不能直接调用）。
+当注销时，通过
+  Enumeration em=request.getSession().getAttributeNames();
+                while (em.hasMoreElements()){
+                    request.getSession().removeAttribute(em.nextElement().toString());
+                }
+清除session域中的值
+github 账号：caizelin111   密码：200117ting
+
+12月3号：
+今天学习GitHub，通过git add.放到缓存区，如何git commit -m '  '放到仓库，然后通过 git push origin master同步到远程仓库中，
+git status可以查看仓库状况。（修改未提交）
+https://blog.csdn.net/geerniya/article/details/79552247
+https://blog.csdn.net/u011535541/article/details/83379151
+https://blog.csdn.net/jerryhanjj/article/details/72777618
+
