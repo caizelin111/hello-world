@@ -1,0 +1,82 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>无标题文档</title>
+
+    <script th:src="@{/js/jquery-3.4.1.min.js}"></script>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/shiyan06_1.css}">
+
+    <script th:src="@{/js/capital.js}"></script>
+
+
+</head>
+<body>
+<div class="firstdiv">
+    <nav class="navbar navbar-inverse" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header active">
+                <a class="navbar-brand" href="#">一国之都</a>
+            </div>
+            <div>
+                <ul class="nav navbar-nav">
+                    <li ><a href="#">查询</a></li>
+                    <li><a href="#">SVN</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Java <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">jmeter</a></li>
+                            <li><a href="#">EJB</a></li>
+                            <li><a href="#">Jasper Report</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">分离的链接</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">另一个分离的链接</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+</div>
+<div class="seconddiv">
+    <table class="font" style="margin-left: 1150px ; font-size: 20px;" >
+
+        <tr th:each="username:${username}">
+            <td th:text="${username}"></td>
+        </tr>
+    </table>
+</div>
+<br/>
+<div class="t0">
+
+
+</div>
+
+<script>
+
+    function a(){
+        var country=$("#text1").val();
+        $.ajax({
+            url:"/user/getcapital",
+            type:"POST",
+            data:"country="+country,
+            datatype:"html",
+            success: function (data,status ){
+                $(".neirong").text("");// 清空数据
+                console.log(data);
+                eval(data);
+                // retStr="$(\".t0.row\").html(data);";
+                // alert("返回结果集="+data);
+                // $("div.row").html(data);
+            }
+        });
+    }
+</script>
+</body>
+</html>

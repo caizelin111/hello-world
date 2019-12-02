@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 配置命名空间，区别名称 -->
+<mapper namespace="com.yiguozhidu.demo.mapper.UserMapper">
+
+
+    <!-- type 对应的返回类型，此处为一个bean，可以是javabean, 也可以是其它-->
+    <resultMap type="com.yiguozhidu.demo.entity.User" id="reflect1">
+        <!-- 主键映射 -->
+              <!--result是对应普通属性，id对应主键属性-->
+        <!-- 普通字段 property指实体的属性；column结果集的字段名称 -->
+        <id property="userid" column="userid"/>
+
+        <result property="username" column="username" />
+        <result property="password" column="password"/>
+
+        <!-- 对象关联 -->
+        <!-- 对一关系 -->
+        <!--javaType 指定关联的类型，此处为Bean，当使用select属性时，无需指定关联的类型-->
+
+
+        <!-- 主键映射 -->
+        <!-- 普通字段 property指实体的属性；column结果集的字段名称 -->
+        <!--result是对应普通属性，id对应主键属性-->
+        <!--
+
+                <association property="courseType" javaType="hzxy.edu.cn.elective.entity.CourseType">
+                    <id property="typeId" column="type_id"/>
+
+
+                    <result property="typeName" column="type_name"/>
+                </association>
+        -->
+    </resultMap>
+
+    <!-- 新增 -->
+    <!--<include refid="Base_Column_List" > 这个在MyBatis查询数据库的sql中经常会出现。
+    它的在上面已经定义，作用相当于 * ，
+         Base_Column_List是固定的几个字段，而用*号的话会降低查询效率，因为后期数据库的字段会不断增加。-->
+   
+
+    <!-- 根据主键删除一条 -->
+    
+    <!--映射文件中有很多属性，常用的就是parameterType(输入类型)、resultType(输出类型)-->
+    <!-- 查询一个，按主键查询 -->
+    <select id="selectUser" resultType="com.yiguozhidu.demo.entity.User">
+        select username as "username",password as "password" from user
+        where username=#{username} AND password=#{password}
+    </select>
+
+    <!-- 新增-->
+    <insert id="insertUser">
+         insert into user (username,password) values (#{username},#{password})
+    </insert>
+
+    <delete id="removeUserByname" parameterType="String">
+        delete from user
+        where username=#{username}
+    </delete>
+
+
+</mapper>

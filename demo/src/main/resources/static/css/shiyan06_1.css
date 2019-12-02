@@ -1,0 +1,16 @@
+@charset "utf-8";
+/* CSS Document */
+
+.row .neirong{
+	margin:0px 0px 0px 0px;
+	padding:10px;
+	height:140px;
+	border:0px;
+    font-size: 30px;
+	border-radius:0px;
+	-webkit-box-shadow:0 0 10px 5px #e7e7e7;
+	box-shadow:0 0 10px 5px  #e7e7e7;
+    font-size: 30px;
+	
+}
+
