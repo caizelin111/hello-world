@@ -65,5 +65,8 @@
         from tbl
        where country= #{country}
     </select>
-
+<select id="getAll" resultType="com.yiguozhidu.demo.entity.Tbl">
+    select *
+    from tbl
+</select>
 </mapper>

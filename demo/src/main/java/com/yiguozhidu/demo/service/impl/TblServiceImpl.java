@@ -6,6 +6,8 @@ import com.yiguozhidu.demo.service.TblService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
+
 @Service
 public class TblServiceImpl implements TblService {
     @Resource
@@ -29,5 +31,13 @@ public class TblServiceImpl implements TblService {
         tbl = null;
         tbl = tblMapper.loadCapitalByCountry(country);
         return tbl;
+    }
+    @Override
+    public List<Tbl> getAll(){
+
+        List<Tbl> list=tblMapper.getAll();
+        return list;
+
+
     }
 }

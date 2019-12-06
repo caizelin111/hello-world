@@ -13,4 +13,6 @@
     font-size: 30px;
 	
 }
-
+.t0.table.active td{
+    width: 30px;
+}

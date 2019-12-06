@@ -8,9 +8,35 @@
     <script th:src="@{/js/bootstrap.min.js}"></script>
     <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
     <link rel="stylesheet" th:href="@{/css/shiyan06_1.css}">
-
+<style>
+    #fgDiv {
+    position: center;
+    width: 250px;
+    margin:0 auto;
+    height: 100px;
+    border: 1px solid #faebcc;
+    background-color: #bce8f1;
+    display: none;
+    border-radius: 5px 5px; /*设置圆角*/
+}</style>
     <script th:src="@{/js/capital.js}"></script>
+    <script>
+       $(function b(){
+            $.ajax({
+                url:"/user/getAll",
+                type:"GET",
+                datatype:"html",
+               data:"",
+                success: function (data,status ){
+                   // $(".tbody").text("");// 清空数据-->
+                    console.log(data);
+                    eval(data);
+                }
+           });
+        })
 
+    </script>-->
+    <link rel="stylesheet" href="../static/css/shiyan06_1.css">
 
 </head>
 <body>
@@ -46,37 +72,80 @@
 </div>
 <div class="seconddiv">
     <table class="font" style="margin-left: 1150px ; font-size: 20px;" >
-
         <tr th:each="username:${username}">
             <td th:text="${username}"></td>
         </tr>
     </table>
 </div>
 <br/>
+
 <div class="t0">
 
+        <table width="400"  class="table  table-hover  table-bordered table-condensed " style="width: 60% ;overflow:hidden;text-overflow:ellipsis;margin-left: 20%">
+            <!--	<caption>一国之都</caption overflow: hidden;text-overflow:ellipsis;>-->
+            <thead>
+            <tr class="info">
+                <th width="6%"><a class="remove" onclick="deleteornnot()" title="删除"><span class="glyphicon glyphicon-trash"></span></a></th>
+                <th width="16%">编号</th>
+                <th width="16%">国家</th>
+                <th width="16%">首都</th>
+                <th width="6%"></th>
+            </tr>
+            </thead>
+            <tbody class="tbody active">
+            <tr>
+                <td><input type="checkbox" name="choose"/></td>
+                <td>w</td>
+                <td>i</td>
+                <td>4</td>
+            </tr>
 
+            </tbody>
+        </table>
+        <div id="fgDiv" >
+            <form role="form">
+        国家：<input type="text" class="form-control" id="textCountry" />
+        <br>
+        首都：<input type="text" class="form-control" id="textCapital" />
+        <br>
+        <input type="button" width="10px" class="btn-success" id="btnSave" value="保存" />
+            </form></div>
 </div>
 
 <script>
+    $(function()
+    {
+        $(".remove").click(function () {
 
-    function a(){
-        var country=$("#text1").val();
-        $.ajax({
-            url:"/user/getcapital",
-            type:"POST",
-            data:"country="+country,
-            datatype:"html",
-            success: function (data,status ){
-                $(".neirong").text("");// 清空数据
-                console.log(data);
-                eval(data);
-                // retStr="$(\".t0.row\").html(data);";
-                // alert("返回结果集="+data);
-                // $("div.row").html(data);
-            }
-        });
-    }
+            //:checked 选择器选取所有选中的复选框或单选按钮。
+             if(confirm("您确定要删除这些记录吗？")){
+             $("input[name='choose']:checked").each(function () {
+                 n=$(this).parents("tr").index();//找到checkbox选中的复选框的父级元素的索引号
+                 // $(".tbody").find('tr').eq(n).remove();//在tbody里面，找他的所有儿子中为tr并且索引号为n的那一行
+           var country=$(".tbody").find('tr').eq(n).find(".trcountry").text();
+
+                     $.ajax({
+                     url:"/user/deleterecord",
+                     type:"POST",
+                     data:"country="+country,
+                     success: function (data,status ){
+                         // $(".tbody").text("");// 清空数据-->
+
+                         // eval(data);
+                     }
+                 });
+             });
+            window.location.reload();//刷新页面
+            }    });
+
+
+    });
+  function revise() {
+      document.getElementById("fgDiv").style.display="block";
+
+
+  }
 </script>
+
 </body>
 </html>

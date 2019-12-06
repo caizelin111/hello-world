@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 import java.util.Map;
 @RestController
 public class TblController {
@@ -69,4 +70,50 @@ public class TblController {
             return retStr;
         }
 
+        @RequestMapping(value = "/user/getAll")
+        @ResponseBody
+        public String getAll()
+        {System.out.println("w asf ");
+        List<Tbl> list=tblService.getAll();
+        String retStr=" ";
+        if(list.size()<=0){
+            retStr="$(\".tbody\").html(\"我爱你\")";
+        }
+        else {
+            System.out.println("有数的哦");
+            String rStr="";
+      for(Tbl tbl1:list){
+       rStr+="<tr><td><input type='checkbox' name='choose' id='choose'/></td>" +
+               "<td>"+tbl1.getCid()+"</td>" + "<td class='trcountry'>"+tbl1.getCountry()+"</td>" + "<td>"+tbl1.getCapital()+"</td>" +
+               "<td><a title='修改' onclick='revise()'><span class='glyphicon glyphicon-edit'></span></a></td></tr>";
+System.out.println(tbl1.getCapital());
+      }
+      retStr="$(\".tbody\").html(\""+ rStr +"\")";
+        }
+
+        return retStr;
     }
+
+    @RequestMapping(value = "/user/deleterecord")
+    @ResponseBody
+    public void deletecord(String country){
+        System.out.println(country);
+        if(tblService.removeCountryByCountry(country)){
+            System.out.println("删除成功");
+        }
+
+
+    }
+
+}
+//    $("#tbody").html('');
+//        //追加数据
+//        $.each(data, function (i, data) {
+//        //一个dom就是一个新闻对象
+//        $("#tbody").append("<tr>"+
+//        "<td>"+data.notitle+"</td>"+
+//        "<td>"+data.notime+"</td>"+
+//        "<td>"+data.noauthor+"</td>"+
+//        "<td><input type='button' id='updBtn' value='修改' οnclick= 'jump("+data.noticeid+")'/>" +"&nbsp&nbsp&nbsp&nbsp"+
+//        "<input type='button' id='delBtn' value='删除' οnclick='del("+data.noticeid+")'/></td>"+
+//        "</tr>");
