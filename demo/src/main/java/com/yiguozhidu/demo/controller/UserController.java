@@ -26,7 +26,6 @@ import java.util.Map;
 //        中的数据是否也需要放置到session中。如果需要，就放置一份。然后就可以直接在session中获取数据了。
 //@SessionAttributes("username")
 public class UserController {
-
     @Resource
     private UserServiceImpl userServiceImpl;
 
@@ -58,20 +57,22 @@ public class UserController {
 //        方法二：
         User user1 = userServiceImpl.selectUser(user.getUsername(), user.getPassword());
         String name1 = "yiguozhidu001";
+        String name2 = "yiguozhidu002";
+        String name3 = "yiguozhidu003";
         String password1 = "123456";
         {
             if (user1 == null) {
 //                map.put("msg", "密码或账号错误!");
                 System.out.println("密码或者账号错误");
                 return "login";
-            } else if (user1.getUsername().equals(name1) && user1.getPassword().equals(password1)) {
-                System.out.println("管理员账号，管理员登录");
+            } else if (user1.getUsername().equals(name1) && user1.getPassword().equals(password1)||user1.getUsername().equals(name2) && user1.getPassword().equals(password1)||user1.getUsername().equals(name3) && user1.getPassword().equals(password1)) {
+                System.out.println("管理员登录：" + user1.getUsername());
                 model.addAttribute("username", "管理员：" + user1.getUsername());
                 session.setAttribute("username", "管理员：" + user1.getUsername());
                 return "guanliyuan";
             } else {
-                model.addAttribute("username", "欢迎用户：" + user1.getUsername());
-                session.setAttribute("username", "欢迎用户：" + user1.getUsername());
+                model.addAttribute("username",   "欢迎用户："+user1.getUsername());
+                session.setAttribute("username", user1.getUsername());
 //               User user1=(User)session.getAttribute("users");
 //                map.put("users", user);
 //                System.out.println(user1.getUsername());
@@ -81,8 +82,6 @@ public class UserController {
             }
 
         }
-
-
     }
 
    @GetMapping(value = "/toregist")
@@ -97,9 +96,6 @@ public  String doregist(Model model, User user, HttpSession session, Map<String,
        if(userServiceImpl.insertUser(user.getUsername(),user.getPassword())==true)
        {
            System.out.println("注册成功，欢迎你！"+user.getUsername());
-
-
-
            //由于model在页面转跳的时候已经失效，所以需要重新 model.addAttribute，然后放在session域中。
         return "login";}
        else{
@@ -111,9 +107,11 @@ public  String doregist(Model model, User user, HttpSession session, Map<String,
     public String execute(Model model, SessionStatus sessionStatus, HttpServletRequest request, HttpSession session) {
 
 
-        if (userServiceImpl.removeUserByname((String) request.getSession().getAttribute("username")) == true) {
-                System.out.println("注销成功，用户被删除");
+       System.out.println("dfsf"+request.getSession().getAttribute("username"));
+        if (userServiceImpl.removeUserByname((String ) request.getSession().getAttribute("username"))==true) {
+//                System.out.println("注销成功，用户被删除");
                 Enumeration em=request.getSession().getAttributeNames();
+
                 while (em.hasMoreElements()){
                     request.getSession().removeAttribute(em.nextElement().toString());
                 }

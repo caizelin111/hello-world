@@ -1,0 +1,28 @@
+Manifest-Version: 1.0
+Main-Class: com.yiguozhidu.demo.DemoApplication
+Class-Path: jboss-logging-3.3.3.Final.jar jackson-datatype-jdk8-2.9.9.ja
+ r mybatis-spring-2.0.2.jar tomcat-embed-websocket-9.0.26.jar mybatis-3.
+ 5.2.jar spring-boot-autoconfigure-2.1.9.RELEASE.jar mybatis-spring-boot
+ -autoconfigure-2.1.0.jar spring-boot-starter-json-2.1.9.RELEASE.jar spr
+ ing-beans-5.1.10.RELEASE.jar spring-boot-starter-tomcat-2.1.9.RELEASE.j
+ ar mybatis-spring-boot-starter-2.1.0.jar tomcat-embed-el-9.0.26.jar slf
+ 4j-api-1.7.28.jar spring-jcl-5.1.10.RELEASE.jar jackson-databind-2.9.9.
+ 3.jar classmate-1.4.0.jar hibernate-validator-6.0.17.Final.jar spring-b
+ oot-starter-web-2.1.9.RELEASE.jar spring-boot-starter-2.1.9.RELEASE.jar
+  thymeleaf-extras-java8time-3.0.4.RELEASE.jar attoparser-2.0.5.RELEASE.
+ jar spring-context-5.1.10.RELEASE.jar javax.annotation-api-1.3.2.jar sp
+ ring-boot-starter-data-jdbc-2.1.9.RELEASE.jar spring-aop-5.1.10.RELEASE
+ .jar spring-boot-starter-jdbc-2.1.9.RELEASE.jar spring-boot-2.1.9.RELEA
+ SE.jar logback-classic-1.2.3.jar spring-data-jdbc-1.0.11.RELEASE.jar sp
+ ring-data-commons-2.1.11.RELEASE.jar jul-to-slf4j-1.7.28.jar jackson-mo
+ dule-parameter-names-2.9.9.jar unbescape-1.1.6.RELEASE.jar jackson-data
+ type-jsr310-2.9.9.jar spring-core-5.1.10.RELEASE.jar validation-api-2.0
+ .1.Final.jar spring-boot-starter-thymeleaf-2.1.9.RELEASE.jar HikariCP-3
+ .2.0.jar logback-core-1.2.3.jar jackson-annotations-2.9.0.jar spring-bo
+ ot-starter-logging-2.1.9.RELEASE.jar log4j-to-slf4j-2.11.2.jar mysql-co
+ nnector-java-8.0.17.jar tomcat-embed-core-9.0.26.jar snakeyaml-1.23.jar
+  spring-expression-5.1.10.RELEASE.jar spring-web-5.1.10.RELEASE.jar jac
+ kson-core-2.9.9.jar thymeleaf-spring5-3.0.11.RELEASE.jar spring-jdbc-5.
+ 1.10.RELEASE.jar thymeleaf-3.0.11.RELEASE.jar spring-tx-5.1.10.RELEASE.
+ jar log4j-api-2.11.2.jar spring-webmvc-5.1.10.RELEASE.jar
+
