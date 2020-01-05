@@ -24,7 +24,7 @@ public class TblController {
         String username1 = (String) session.getAttribute("username");
         if (username1 != null) {
 //
-            map.put("username", "欢迎用户："+username1);
+            map.put("username", username1);
             System.out.println("session里面不是空的   " + username1);
         }
         else{

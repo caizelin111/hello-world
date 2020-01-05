@@ -11,39 +11,28 @@
 
 
 </head>
+<body style="height: 100%; background-image: url(/images/bg.jpg); background-size: cover;">
+<div style="width: 26%;margin: 15% auto ;border-radius: 15px;padding: 40px;background-color:rgba(255,255,255,0.6);">
+    <form role="form" action="/user/zhuceing" method="post">
+        <table >
+            <tr>
+                <td><label>登录名：</label></td>
+                <td><input class="form-control" type="text" id="username" name="username"></td>
+            </tr>
+            <tr style="height: 15px"></tr>
+            <tr>
+                <td><label>密码：</label></td>
+                <td><input class="form-control" type="password" id="password" name="password"></td>
 
-<body style="text-align: center">
+            <tr>
+                <td><button class="btn btn-default" id="submit" type="submit" value="注册">注册</button></td>
+            </tr>
 
-
-
-<div class="row" >
-    <br /><br /><br />
-    <div class="col-sm-4 "style="margin:120px auto auto 400px;width: 30%" >
-        <form  action="/user/zhuceing" method="post" class="form-horizontal" role="form">
-            <div class="form-group">
-                <label for="firstname" class="col-sm-2 control-label">用户</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" id="firstname" name="username"
-                           placeholder="请输入用户名">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="lastname" class="col-sm-2 control-label">密码</label>
-                <div class="col-sm-10">
-                    <input type="password" class="form-control" id="lastname" name="password"
-                           placeholder="请输入密码">
-                </div>
-            </div>
-
-            <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-10">
-                    <button type="submit" class="btn btn-success" name="zhuce">注册</button>
-                </div>
-            </div>
-        </form>
-
-    </div>
+        </table>
+    </form>
 </div>
-</div>
+
+
+
 </body>
 </html>

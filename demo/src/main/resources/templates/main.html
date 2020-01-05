@@ -11,12 +11,12 @@
 
 
 </head>
-<body>
+<body >
 <div class="firstdiv">
-<nav class="navbar navbar-default" role="navigation">
+<nav class="navbar navbar-inverse" role="navigation">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="#">一国之都</a>
+            <a class="navbar-brand"style="color: white;font-size: 18px" href="#">一国之都</a>
         </div>
         <div>
             <!--向左对齐-->
@@ -29,8 +29,6 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li><a href="#">系统说明</a></li>
-
-
                         <li class="divider"></li>
                         <li><a href="#">意见反馈</a></li>
                     </ul>
@@ -39,6 +37,10 @@
             </ul>
             <!--向右对齐-->
             <ul class="nav navbar-nav navbar-right">
+                <li >
+                    <a  id="yc5"style="display:none" href="#">用户：<span class="badge" th:text="${username}">
+        </span></a>
+                </li>
                 <li id="yc1"><a href="tologin"><span class="glyphicon glyphicon-log-in"></span> 登录</a></li>
                 <li id="yc2"><a href="toregist"><span class="glyphicon glyphicon-user"></span> 注册</a></li>
                 <li id="yc3" style="display:none"><a href="tozuxiao" onclick=" return del()"><span class="glyphicon glyphicon-off"></span> 注销</a></li>
@@ -50,37 +52,65 @@
     </div>
 </nav>
 </div>
-<div class="seconddiv">
-    <table class="font" style="margin-left: 1150px ; font-size: 20px;" >
-        <tr th:each="username:${username}">
-            <td id="yc"th:text="${username}"></td>
-        </tr>
-    </table>
-</div>
-<br/>
-<div style="display: none" id="yc4">
-    <div class="study" style="margin: auto;width: 30%;height:130px;border: #bce8f1 ;background: #bce8f1;text-align: center"><p style="font-size: 30px ">3秒后开始进入学习...</p></div><br>
-    <div class="btn-group "style="margin-left: 48%">
-        <button class="btn btn-default"id="stop"><span class="glyphicon glyphicon-pause"></span></button>
-        <button class="btn btn-default"id="go"style="display: none"><span class="glyphicon glyphicon-play"></span></button>
-        <button class="btn btn-default"id="exit"><span class="glyphicon glyphicon-stop"></span></button>
-    </div><br>
-</div>
-<div class="thirddiv"id="firstid"style="width: 90%;margin-left: 10%">
-    <div class="row" >
-    <form role="form"  >
-                <div class="form-group col-xs-4 col-sm-4 col-sm-offset-1 col-xs-offset-1" >
-                    <textarea name="country"  class="form-control"   rows="6"  id="text1" placeholder="请输入国家"></textarea>
-                </div>
-                <div class="col-xs-1 col-sm-1">
-                <button class="btn btn-info" type="button" style="margin-top:40px" onclick="a()">查询<span class="glyphicon glyphicon-search"></span></button>
-                </div>
-                <div class=" neirong col-xs-4 col-sm-4 ">
-                     <p></p>
-                </div>
-    </form>
+<!--<div class="seconddiv">-->
+
+<!--</div>-->
+<div class="pageContainer  "style="margin-top:-20px;clear:both;height:auto">
+    <!-- 左侧导航栏 -->
+    <div class="pageSidebar "style="width: 18%;float: left">
+        <ul class="nav  nav-stacked nav-pills"style="color:white ;background: #444445 ;height: 571px">
+            <!-- 开始 -->
+        </ul>
     </div>
+
+    <!-- 左侧导航和正文内容的分隔线 -->
+
+    <!-- 正文内容部分 -->
+    <div class="pageContent "style="width: 82%;float: left">
+        <div style="width: 100%;height:60px;background: white;background:#e8e8e8;border-bottom: 6px solid #e8e8e8">
+            <table class="font" style="float: right; font-size: 20px;display: none" >
+
+                <tr th:each="username:${username}">
+                    <td id="yc"th:text="${username}"></td>
+                </tr>
+             </table>
+        </div>
+        <div style="width: 70%;margin:5% 10% auto 10%;">
+            <div style="display: none" id="yc4">
+                <div class="study" style="margin:5% auto 5% auto;padding:60px;width: 40%;height:200px;border: #bce8f1 ;background: #bce8f1;text-align: center"><p style="font-size: 30px ;">3秒后开始进入学习...</p></div><br>
+                <div class="btn-group "style="margin-left: 45%">
+                    <button class="btn btn-default"id="stop"><span class="glyphicon glyphicon-pause"></span></button>
+                    <button class="btn btn-default"id="go"style="display: none"><span class="glyphicon glyphicon-play"></span></button>
+                    <button class="btn btn-default"id="exit"><span class="glyphicon glyphicon-stop"></span></button>
+                </div><br>
+            </div>
+            <div class="thirddiv"id="firstid"style="width: 100%;">
+                <div class="row">
+                    <form role="form" >
+                        <div class="form-group col-xs-5 col-sm-5 " >
+                            <textarea name="country"  class="form-control"   rows="6"  id="text1" placeholder="请输入国家"></textarea>
+                        </div>
+                        <div class="col-xs-2 col-sm-2">
+                            <button class="btn btn-info" type="button" style="margin-top:40px" onclick="a()">查询<span class="glyphicon glyphicon-search"></span></button>
+                        </div>
+                        <div class=" neirong col-xs-5 col-sm-5 ">
+                            <p></p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
 </div>
+
+
+
+
+
+
+
 
 <script>
 
@@ -109,8 +139,10 @@
         document.getElementById("yc1").style.display="none";
         document.getElementById("yc2").style.display="none";
         document.getElementById("yc3").style.display="block";
+        document.getElementById("yc5").style.display="block";
     }
     function b() {
+        if( document.getElementById("yc").innerText!=null){
     // document.getElementById("firstid").style.display="none";
     document.getElementById("yc4").style.display="block";
     var currentNum = 0;
@@ -151,6 +183,8 @@
         window.location.reload();
     }
 }
+
+    }
 </script>
 </body>
 </html>

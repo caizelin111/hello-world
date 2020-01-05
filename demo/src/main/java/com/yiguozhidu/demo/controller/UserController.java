@@ -67,11 +67,11 @@ public class UserController {
                 return "login";
             } else if (user1.getUsername().equals(name1) && user1.getPassword().equals(password1)||user1.getUsername().equals(name2) && user1.getPassword().equals(password1)||user1.getUsername().equals(name3) && user1.getPassword().equals(password1)) {
                 System.out.println("管理员登录：" + user1.getUsername());
-                model.addAttribute("username", "管理员：" + user1.getUsername());
+                model.addAttribute("username",  user1.getUsername());
                 session.setAttribute("username", "管理员：" + user1.getUsername());
                 return "guanliyuan";
             } else {
-                model.addAttribute("username",   "欢迎用户："+user1.getUsername());
+                model.addAttribute("username",   user1.getUsername());
                 session.setAttribute("username", user1.getUsername());
 //               User user1=(User)session.getAttribute("users");
 //                map.put("users", user);

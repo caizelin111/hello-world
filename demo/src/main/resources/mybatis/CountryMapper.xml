@@ -6,8 +6,6 @@
 <mapper namespace="com.yiguozhidu.demo.mapper.TblMapper">
 
     <!-- SQL片段 -->
-
-
     <!-- 中间，对象的属性和结果集的字段之间的对应关系 -->
     <!-- type 对应的返回类型，此处为一个bean，可以是javabean, 也可以是其它-->
     <resultMap type="com.yiguozhidu.demo.entity.Tbl" id="reflect2">
@@ -17,8 +15,6 @@
         <!-- 普通字段 property指实体的属性；column结果集的字段名称 -->
         <result property="country" column="country"/>
         <result property="capital" column="capital"/>
-
-
         <!-- 对象关联 -->
         <!-- 对一关系 -->
         <!--javaType 指定关联的类型，此处为Bean，当使用select属性时，无需指定关联的类型-->
